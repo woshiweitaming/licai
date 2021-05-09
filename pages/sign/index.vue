@@ -1,16 +1,16 @@
 <template>
 	<view class="sign">
+		<view class="btns_box">
+			<view class="labels">
+				<view class="button button1" @click="save"><view class="txt">{{getLang('sign_p2')}}</view></view>
+			</view>
+			<view class="labels">
+			    <view class="button button2" @click="clear"><view class="txt">{{getLang('sign_p3')}}</view></view>
+			</view>
+		</view>
 		<view class="sign_main">
 			<canvas id="canvas" disable-scroll="true" class="canvas" canvas-id="cid" @touchstart="starts"
 			 @touchmove="moves" @touchend="end"></canvas>
-		</view>
-		<view class="btns_box">
-			<view class="labels">
-				<u-button type="primary" shape="circle" @click="save">{{getLang('sign_p2')}}</u-button>
-			</view>
-			<view class="labels">
-			    <u-button shape="circle" plain @click="clear">{{getLang('sign_p3')}}</u-button>
-			</view>
 		</view>
 	</view>
 </template>
@@ -108,6 +108,7 @@
 			clear() {
 				this.dom.clearRect(0, 0, 1000, 1000)
 				this.dom.draw()
+				this.line = []
 			},
 			save() {
 				if(this.line.length === 0){
@@ -126,37 +127,70 @@
 		},
 		onShow(){
 			this.dom = uni.createCanvasContext('cid');
+			if(typeof plus !== 'undefined'){
+				plus.screen.lockOrientation('landscape-primary')
+			}
 		},
 		onLoad() {
 			uni.setNavigationBarTitle({
 				title: this.getLang('sign_p1')
 			})
+		},
+		onBackPress() {
+			if(typeof plus !== 'undefined'){
+				plus.screen.unlockOrientation('landscape-primary')
+			}
 		}
 	}
 </script>
 
-<style scoped>
+<style coped>
+	page{
+		height: 100%;
+	}
 	.sign{
 		width: 100%;
 		height: 100%;
 		padding: 40upx;
+		display: flex;
 	}
 	.sign_main{
-		height: 600upx;
+		flex: 1;
+		height: 100%;
 		background: #fff;
 		border: 2px dashed #eee;
 		border-radius: 40upx;
+		margin-left: 20rpx;
 	}
 	.canvas{
 		width: 100%;
 		height: 100%;
 	}
 	.btns_box{
+		width: 80rpx;
+		height: 100%;
 		display: flex;
-		margin-top: 40upx;
+		flex-direction: column;
 	}
 	.btns_box .labels{
 		padding: 10upx;
-		width: 50%;
+		height: 50%;
+	}
+	.button{
+		height: 100%;
+		border-radius: 40upx;
+		padding-top: 550%;
+	}
+	.button1{
+		background: #0077FF;
+		color: #fff;
+	}
+	.button2{
+		background: #fff;
+		border: 1px solid #eee;
+	}
+	.txt{
+		-webkit-transform: rotate(90deg);
+		font-size: 28rpx
 	}
 </style>

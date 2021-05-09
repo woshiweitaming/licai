@@ -3,7 +3,7 @@
 		"appName": "首源",
 		"home": "首页",
 		"find": "投资理财",
-		"adviser": "投资顾问",
+		"adviser": "在线客服",
 		"assets": "我的资产",
 		"home_p1": "安全保障",
 		"home_p2": "正规持牌机构",
@@ -572,6 +572,7 @@
 		"notice_p1": "公告",
 		"information_p1": "最新资讯",
 		"coin_exchange_record_p1": "兑换记录",
-		"my_profit_p1": "我的收益"
+		"my_profit_p1": "我的收益",
+		"message_p1": "站内信"
 	}
 }

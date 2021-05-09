@@ -139,6 +139,9 @@
 <style>
 	page{
 		height: 100%;
+		background: url(../../static/images/invite/invite_bg.jpg);
+		background-size: cover;
+		background-position: center center
 	}
 </style>
 <style scoped>

@@ -3,7 +3,7 @@
 		<view class="custom_header_main">
 			<image src="../../static/images/logo/asset-logo-head.png" class="logo" mode="widthFix"></image>
 			<view class="mail">
-				<view class="mail_wrap">
+				<view class="mail_wrap" @click="toPage">
 					<view class="badge" v-if="badgeShow">0</view>
 					<image src="../../static/images/mail_fill.png" mode="widthFix" class="mail_icon"></image>
 				</view>
@@ -19,7 +19,14 @@
 			return {
 				badgeShow: false
 			}
-		}
+		},
+		methods: {
+			toPage(){
+				uni.navigateTo({
+					url: '/pages/message/index'
+				})
+			}
+		} 
 	}
 </script>
 
